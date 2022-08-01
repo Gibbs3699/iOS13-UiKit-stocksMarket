@@ -9,6 +9,8 @@ import UIKit
 
 class WatchListViewController: UIViewController {
 
+    private var seachTimer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -32,7 +34,26 @@ extension WatchListViewController: UISearchResultsUpdating {
             return
         }
         
-        print("PPPP query ----> \(query)")
+        seachTimer?.invalidate()
+        
+        seachTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { _ in
+            APICallers.shared.search(query: query) { result in
+                switch result {
+                case .success(let response):
+                    DispatchQueue.main.async {
+                        resultVC.update(with: response.result)
+                        print("PPPP check result ---> \(response.result)")
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        resultVC.update(with: [])
+                    }
+                    print(error)
+                }
+                
+            }
+        })
+
     }
     
 }

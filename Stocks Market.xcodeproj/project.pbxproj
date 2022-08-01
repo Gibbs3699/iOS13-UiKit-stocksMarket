@@ -17,6 +17,7 @@
 		DC776C922897C73600DB9989 /* StockDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC776C912897C73600DB9989 /* StockDetailsViewController.swift */; };
 		DC776C952897C75300DB9989 /* APICallers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC776C942897C75300DB9989 /* APICallers.swift */; };
 		DC776C972897C88900DB9989 /* SearchResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC776C962897C88800DB9989 /* SearchResultsTableViewCell.swift */; };
+		DC776C992897D9B500DB9989 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC776C982897D9B500DB9989 /* SearchResults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DC776C912897C73600DB9989 /* StockDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsViewController.swift; sourceTree = "<group>"; };
 		DC776C942897C75300DB9989 /* APICallers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallers.swift; sourceTree = "<group>"; };
 		DC776C962897C88800DB9989 /* SearchResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewCell.swift; sourceTree = "<group>"; };
+		DC776C982897D9B500DB9989 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		DC776C8B2897C5E600DB9989 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DC776C982897D9B500DB9989 /* SearchResults.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				DC776C972897C88900DB9989 /* SearchResultsTableViewCell.swift in Sources */,
 				DC776C772897C4EC00DB9989 /* SceneDelegate.swift in Sources */,
 				DC776C8E2897C68600DB9989 /* NewsViewController.swift in Sources */,
+				DC776C992897D9B500DB9989 /* SearchResults.swift in Sources */,
 				DC776C902897C72000DB9989 /* SearchResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

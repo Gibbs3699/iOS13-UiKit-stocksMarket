@@ -11,10 +11,6 @@ class SearchResultsTableViewCell: UITableViewCell {
 
     static let identifier = "SearchResultsTableViewCell"
     
-    struct ViewModel {
-        
-    }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
     }
@@ -23,16 +19,5 @@ class SearchResultsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
-    
-    public func configure(with viewModel: ViewModel) {
-        
-    }
 
 }
