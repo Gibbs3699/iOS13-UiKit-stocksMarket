@@ -6,16 +6,20 @@
 //
 
 import UIKit
+import FloatingPanel
 
 class WatchListViewController: UIViewController {
 
     private var seachTimer: Timer?
+    
+    private var panel: FloatingPanelController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         
         setupSearchController()
+        setUpFloatingPanel()
     }
 
     private func setupSearchController() {
@@ -24,6 +28,15 @@ class WatchListViewController: UIViewController {
         let searchVC = UISearchController(searchResultsController: resultVC)
         searchVC.searchResultsUpdater = self
         navigationItem.searchController = searchVC
+    }
+    
+    private func setUpFloatingPanel() {
+        let vc = NewsViewController(type: .topStories)
+        let panel = FloatingPanelController(delegate: self)
+        panel.surfaceView.backgroundColor = .secondarySystemBackground
+        panel.set(contentViewController: vc)
+        panel.addPanel(toParent: self)
+        panel.track(scrollView: vc.tableView)
     }
     
 }
@@ -43,7 +56,6 @@ extension WatchListViewController: UISearchResultsUpdating {
                 case .success(let response):
                     DispatchQueue.main.async {
                         resultVC.update(with: response.result)
-                        print("PPPP check result ---> \(response.result)")
                     }
                 case .failure(let error):
                     DispatchQueue.main.async {
@@ -66,5 +78,11 @@ extension WatchListViewController: SearchResultsViewControllerDelegate {
         let navVC = UINavigationController(rootViewController: vc)
         vc.title = searchResult.description
         present(navVC, animated: true)
+    }
+}
+
+extension WatchListViewController: FloatingPanelControllerDelegate {
+    func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
+        navigationItem.searchController?.searchBar.isHidden = fpc.state == .full
     }
 }
