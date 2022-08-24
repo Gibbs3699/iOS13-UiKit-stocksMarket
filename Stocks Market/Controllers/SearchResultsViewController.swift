@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol SearchResultsViewControllerDelegate: AnyObject {
+    func searchResultsViewControllerDidSelect(searchResult: SearchResult)
+}
+
 class SearchResultsViewController: UIViewController {
+    
+    weak var delegate: SearchResultsViewControllerDelegate?
     
     private var results = [SearchResult]()
     
@@ -64,5 +70,11 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let model = results[indexPath.row]
+        delegate?.searchResultsViewControllerDidSelect(searchResult: model)
+    }
     
 }
