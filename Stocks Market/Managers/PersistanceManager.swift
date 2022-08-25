@@ -51,6 +51,10 @@ final class PersistanceManager {
         userDefault.set(newList, forKey: Constants.watchListKey)
     }
     
+    public func watchListContains(symbol: String) -> Bool {
+        return watchList.contains(symbol)
+    }
+    
     // MARK: - Private
     
     private var hasOnBoarded: Bool {
