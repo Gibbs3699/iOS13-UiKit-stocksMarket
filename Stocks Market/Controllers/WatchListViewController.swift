@@ -203,6 +203,36 @@ extension WatchListViewController: UITableViewDelegate, UITableViewDataSource {
         return WatchListTableViewCell.preferredHeight
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            // Update persistance
+            PersistanceManager.shared.reMoveFromWatchList(symbol: viewModels[indexPath.row].symbol)
+            // Update viewModel
+            viewModels.remove(at: indexPath.row)
+            // Delete row
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let viewModel = viewModels[indexPath.row]
+
+//        let vc = StockDetailsViewController(
+//            symbol: viewModel.symbol,
+//            companyName: viewModel.companyName,
+//            candleStickData: watchListMap[viewModel.symbol] ?? []
+//        )
+//        vc.title =  viewModel.companyName
+//        let navVC = UINavigationController(rootViewController: vc)
+//        present(navVC, animated: true)
+    }
     
 }
