@@ -8,5 +8,6 @@ target 'Stocks Market' do
   # Pods for Stocks Market
 pod "FloatingPanel"
 pod 'SDWebImage'
+pod 'Charts'
 
 end
